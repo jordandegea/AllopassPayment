@@ -21,6 +21,5 @@
             "Sinenco\\AllopassPaymentBundle" : ""
         }
     },
-    "target-dir" : "Sinenco/AllopassPaymentBundle",
-    "minimum-stability": "dev"
+    "target-dir" : "Sinenco/AllopassPaymentBundle"
 }
