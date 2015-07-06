@@ -1,5 +1,6 @@
 {
     "name" : "sinenco/allopasspayment",
+    "version" : "1.0",
     "description" : "Payment with Allopass for Symfony",
     "type" : "symfony-bundle",
     "authors" : [{
