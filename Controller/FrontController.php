@@ -9,8 +9,7 @@ use Sinenco\AllopassAPIBundle\API\AllopassAPI;
 use Sinenco\AllopassPaymentBundle\Entity\Transaction;
 use Sinenco\AllopassPaymentBundle\Events\AllopassPaymentCallbackEvent;
 use Sinenco\AllopassPaymentBundle\Events\AllopassPaymentCoreEvents;
-use Symfony\Component\HttpFoundation\Response ; 
-
+use Symfony\Component\HttpFoundation\Response;
 
 class FrontController extends Controller {
 
@@ -20,11 +19,11 @@ class FrontController extends Controller {
         $api = new AllopassAPI();
         $response = $api->prepareTransaction(
                 array(
-                    'site_id' => $this->getParameter("allopass_payment.site_id"),
+                    'site_id' => $this->container->getParameter("allopass_payment.site_id"),
                     'pricepoint_id' => $id,
-                    'product_name' => 'Sinenco',
-                    'forward_url' => "http://5.196.18.77/return.php",
-                    'notification_url' => "http://5.196.18.77/callback.php",
+                    'product_name' => $this->container->getParameter("allopass_payment.site_id"),
+                    'forward_url' => $this->generateUrl("sinenco_allopass_payment_return"),
+                    'notification_url' => $this->generateUrl("sinenco_allopass_payment_callback"),
                     'data' => $data
                 //reference_currency
                 //error_url
@@ -73,12 +72,12 @@ class FrontController extends Controller {
 
                 $em->persist($transaction);
                 $em->flush();
-                
-                $first_time = true ;
-            }else{
-                $first_time = false ; 
+
+                $first_time = true;
+            } else {
+                $first_time = false;
             }
-            
+
             $event = new AllopassPaymentCallbackEvent($transaction, $first_time);
 
             $this
@@ -87,18 +86,20 @@ class FrontController extends Controller {
                     ->dispatch(AllopassPaymentCoreEvents::onAllopassPaymentCallback, $event)
             ;
         }
-        
+
         return new Response();
     }
 
     public function returnAction() {
-        if ( $this->getParameter("sinenco.allopass_payments.return_route") == "" ){
+        if ($this->getParameter("sinenco.allopass_payments.return_route") == "") {
             $response = new Response();
             $response->setContent("You need to create your own return Page");
-            return $response ; 
+            return $response;
         }
         return new RedirectResponse(
-                $this->getParameter("sinenco.allopass_payments.return_route") . http_build_query($_GET), 307
+                $this->generateUrl(
+                        $this->getParameter("sinenco.allopass_payments.return_route")
+                ) . http_build_query($_GET), 307
         );
     }
 
