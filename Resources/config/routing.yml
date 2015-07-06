@@ -1,0 +1,11 @@
+sinenco_allopass_payment_pay:
+    path:     /pay/{id}/{data}
+    defaults: { _controller: SinencoAllopassPaymentBundle:Front:pay }
+
+sinenco_allopass_payment_callback:
+    path:     /callback
+    defaults: { _controller: SinencoAllopassPaymentBundle:Front:callback }
+
+sinenco_allopass_payment_return:
+    path:     /return
+    defaults: { _controller: SinencoAllopassPaymentBundle:Front:return }

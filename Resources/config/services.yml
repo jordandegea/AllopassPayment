@@ -1,0 +1,7 @@
+parameters:
+    sinenco.allopass_payments.return_route: ""
+
+services:
+#    sinenco_allopass_payment.example:
+#        class: Sinenco\AllopassPaymentBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
