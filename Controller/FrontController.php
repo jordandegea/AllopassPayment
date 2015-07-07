@@ -13,6 +13,28 @@ use Symfony\Component\HttpFoundation\Response;
 
 class FrontController extends Controller {
 
+    public function prepareAction($data) {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $repository = $em->getRepository("SinencoAllopassPaymentBundle:PricePoint");
+
+        $pricePoints = $repository->findAll();
+
+        $countries = [];
+
+        foreach ($pricePoints as $pricepoint) {
+            $country = $pricepoint->getCountry();
+            $type = $pricepoint->getType();
+            $countries[$country][$type][] = $pricepoint;
+        }
+
+        return $this->render('SinencoAllopassPaymentBundle:Pay:prepare.html.twig', array(
+                    'countries' => $countries,
+                    'data' => $data
+        ));
+    }
+
     public function payAction($id, $data) {
 
         $this->get("sinenco_allopass_api.init");
