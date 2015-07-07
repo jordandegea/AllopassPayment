@@ -232,38 +232,6 @@ class Transaction {
         return $this->payoutAmount;
     }
 
-    /**
-     * Add codes
-     *
-     * @param \Sinenco\AllopassPaymentBundle\Entity\CodeTransaction $codes
-     * @return Transaction
-     */
-    public function addCode(\Sinenco\AllopassPaymentBundle\Entity\CodeTransaction $codes)
-    {
-        $this->codes[] = $codes;
-
-        return $this;
-    }
-
-    /**
-     * Remove codes
-     *
-     * @param \Sinenco\AllopassPaymentBundle\Entity\CodeTransaction $codes
-     */
-    public function removeCode(\Sinenco\AllopassPaymentBundle\Entity\CodeTransaction $codes)
-    {
-        $this->codes->removeElement($codes);
-    }
-
-    /**
-     * Get codes
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getCodes()
-    {
-        return $this->codes;
-    }
 
     /**
      * Set data
