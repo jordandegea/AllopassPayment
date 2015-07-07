@@ -22,6 +22,13 @@ class Transaction {
     private $id;
 
     
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="data", type="string", length=100)
+     */
+    private $data;
+    
     
     /**
      * @var timestamp
@@ -256,5 +263,28 @@ class Transaction {
     public function getCodes()
     {
         return $this->codes;
+    }
+
+    /**
+     * Set data
+     *
+     * @param string $data
+     * @return Transaction
+     */
+    public function setData($data)
+    {
+        $this->data = $data;
+
+        return $this;
+    }
+
+    /**
+     * Get data
+     *
+     * @return string 
+     */
+    public function getData()
+    {
+        return $this->data;
     }
 }

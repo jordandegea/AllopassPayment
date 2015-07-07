@@ -90,7 +90,7 @@ class FrontController extends Controller {
 
                 $transaction->setPayoutAmount($_GET["payout_amount"]);
                 $transaction->setPayoutCurrency($_GET["payout_currency"]);
-
+                $transaction->setData($_GET['data']);
 
                 $em->persist($transaction);
                 $em->flush();
