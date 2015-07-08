@@ -3,7 +3,7 @@
 namespace Sinenco\AllopassPaymentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Sinenco\AllopassPaymentBundle\Entity\CodeTransaction ; 
+
 /**
  * Transaction
  *

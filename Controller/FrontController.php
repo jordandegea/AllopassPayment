@@ -43,7 +43,7 @@ class FrontController extends Controller {
                 array(
                     'site_id' => $this->container->getParameter("allopass_payment.site_id"),
                     'pricepoint_id' => $id,
-                    'product_name' => $this->container->getParameter("allopass_payment.site_id"),
+                    'product_name' => $this->container->getParameter("allopass_payment.product_name"),
                     'forward_url' => $this->generateUrl("sinenco_allopass_payment_return"),
                     'notification_url' => $this->generateUrl("sinenco_allopass_payment_callback"),
                     'data' => $data
