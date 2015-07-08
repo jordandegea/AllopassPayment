@@ -44,8 +44,8 @@ class FrontController extends Controller {
                     'site_id' => $this->container->getParameter("allopass_payment.site_id"),
                     'pricepoint_id' => $id,
                     'product_name' => $this->container->getParameter("allopass_payment.product_name"),
-                    'forward_url' => $this->generateUrl("sinenco_allopass_payment_return"),
-                    'notification_url' => $this->generateUrl("sinenco_allopass_payment_callback"),
+                    'forward_url' => $this->generateUrl("sinenco_allopass_payment_return", null, true ),
+                    'notification_url' => $this->generateUrl("sinenco_allopass_payment_callback", null, true),
                     'data' => $data
                 //reference_currency
                 //error_url
@@ -113,14 +113,14 @@ class FrontController extends Controller {
     }
 
     public function returnAction() {
-        if ($this->getParameter("sinenco.allopass_payments.return_route") == "") {
+        if ($this->container->getParameter("sinenco.allopass_payments.return_route") == "") {
             $response = new Response();
             $response->setContent("You need to create your own return Page");
             return $response;
         }
         return new RedirectResponse(
                 $this->generateUrl(
-                        $this->getParameter("sinenco.allopass_payments.return_route")
+                        $this->container->getParameter("sinenco.allopass_payments.return_route")
                 ) . http_build_query($_GET), 307
         );
     }
