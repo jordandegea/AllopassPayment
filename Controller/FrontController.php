@@ -10,6 +10,7 @@ use Sinenco\AllopassPaymentBundle\Entity\Transaction;
 use Sinenco\AllopassPaymentBundle\Events\AllopassPaymentCallbackEvent;
 use Sinenco\AllopassPaymentBundle\Events\AllopassPaymentCoreEvents;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class FrontController extends Controller {
 
@@ -121,7 +122,7 @@ class FrontController extends Controller {
         return new RedirectResponse(
                 $this->generateUrl(
                         $this->container->getParameter("sinenco.allopass_payments.return_route")
-                ) . http_build_query($_GET), 307
+                ) . "?" . http_build_query($_GET), 307
         );
     }
 
