@@ -5,7 +5,7 @@
 
 # Installation
 add in composer require : 
-   "sinenco/AllopassPayment" : "dev-master"
+   "sinenco/AllopassPayment" : "1.*"
 
 # Configuration
 
@@ -17,8 +17,8 @@ add in composer require :
 
 ### AllopassPayment
     parameters:
-        allopass_payment.site_id: ""
-        allopass_payment.product_name: ""
+        allopass_payment.site_id: "Your site ID"
+        allopass_payment.product_name: "Your Product Name"
         sinenco.allopass_payments.return_route: "Your controller page for return"
 
 When a user pay with allopass, he will be redirected to this page. 
@@ -37,6 +37,7 @@ The transaction is not checked with return URL but with callback url.
         allopassAPI.network_port: "80"
         allopassAPI.host: "api.allopass.com"
 
+You can use HTTPS with 443 too
 
 ## Service to add
     services:
@@ -60,6 +61,7 @@ The transaction is not checked with return URL but with callback url.
 
 ## Update PricePoint
 When you set all parameters : 
+
     php app/console allopass:prices:update
 
 
