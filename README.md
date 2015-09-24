@@ -74,4 +74,6 @@ When a user pay, an event is dispatched : AllopassPaymentCoreEvents::onAllopassP
 The event is a AllopassPaymentCallbackEvent object
 
 The event have the method isFirstTime() to know if the transaction existed before this payment. 
+The event have the method getTransaction() to get a Sinenco\AllopassPaymentBundle\Entity\Transaction entity. This entity is stored before the dispatch. 
+
 
