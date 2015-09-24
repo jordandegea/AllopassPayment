@@ -59,6 +59,10 @@ You can use HTTPS with 443 too
         prefix: /
 
 
+## Images
+    php app/console assets:install
+
+
 ## Update PricePoint
 When you set all parameters : 
 
